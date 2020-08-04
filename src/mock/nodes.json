@@ -1,0 +1,264 @@
+{
+    "nodes": [{
+        "id": "g43",
+        "draggable": true,
+        "type": "rounded-rectangle",
+        "label": "123",
+        "labelCfg": {
+            "position": "center",
+            "style": {
+                "fontSize": 16,
+                "stroke": "#000000"
+            }
+        },
+        "width": 80,
+        "height": 40,
+        "minWidth": 20,
+        "minHeight": 20,
+        "anchorPoints": [
+            [0, 0],
+            [0.25, 0],
+            [0.5, 0],
+            [0.75, 0],
+            [1, 0],
+            [1, 0.25],
+            [1, 0.5],
+            [1, 0.75],
+            [1, 1],
+            [0.75, 1],
+            [0.5, 1],
+            [0.25, 1],
+            [0, 1],
+            [0, 0.75],
+            [0, 0.5],
+            [0, 0.25]
+        ],
+        "shapeControl": {
+            "controllers": [
+                [0, 0, "nwse-resize"],
+                [0, 0.5, "ew-resize"],
+                [0, 1, "nesw-resize"],
+                [0.5, 0, "ns-resize"],
+                [0.5, 1, "ns-resize"],
+                [1, 0, "nesw-resize"],
+                [1, 0.5, "ew-resize"],
+                [1, 1, "nwse-resize"]
+            ],
+            "rotate": true
+        },
+        "name": "XFC_NODE_Rounded-rectangle",
+        "x": -96.49999999999989,
+        "y": -350.25,
+        "size": [80, 40],
+        "style": {
+            "fill": "#FFFFFF",
+            "fillOpacity": 1,
+            "stroke": "#000000",
+            "strokeOpacity": 1,
+            "lineWidth": 1,
+            "lineDash": []
+        },
+        "groupId": ""
+    }, {
+        "id": "g45",
+        "draggable": true,
+        "type": "rounded-rectangle",
+        "label": "456",
+        "labelCfg": {
+            "position": "center",
+            "style": {
+                "fontSize": 16,
+                "stroke": "#000000"
+            }
+        },
+        "width": 74,
+        "height": 40,
+        "minWidth": 20,
+        "minHeight": 20,
+        "anchorPoints": [
+            [0, 0],
+            [0.25, 0],
+            [0.5, 0],
+            [0.75, 0],
+            [1, 0],
+            [1, 0.25],
+            [1, 0.5],
+            [1, 0.75],
+            [1, 1],
+            [0.75, 1],
+            [0.5, 1],
+            [0.25, 1],
+            [0, 1],
+            [0, 0.75],
+            [0, 0.5],
+            [0, 0.25]
+        ],
+        "shapeControl": {
+            "controllers": [
+                [0, 0, "nwse-resize"],
+                [0, 0.5, "ew-resize"],
+                [0, 1, "nesw-resize"],
+                [0.5, 0, "ns-resize"],
+                [0.5, 1, "ns-resize"],
+                [1, 0, "nesw-resize"],
+                [1, 0.5, "ew-resize"],
+                [1, 1, "nwse-resize"]
+            ],
+            "rotate": true
+        },
+        "name": "XFC_NODE_Rounded-rectangle",
+        "x": 42.000000000000114,
+        "y": -351.25,
+        "size": [74, 40],
+        "style": {
+            "fill": "#FFFFFF",
+            "fillOpacity": 1,
+            "stroke": "#000000",
+            "strokeOpacity": 1,
+            "lineWidth": 1,
+            "lineDash": []
+        },
+        "groupId": ""
+    }, {
+        "id": "g47",
+        "draggable": true,
+        "type": "diamond",
+        "label": "7",
+        "labelCfg": {
+            "position": "center",
+            "style": {
+                "fontSize": 16,
+                "stroke": "#000000"
+            }
+        },
+        "width": 80,
+        "height": 80,
+        "minWidth": 20,
+        "minHeight": 20,
+        "anchorPoints": [
+            [0, 0],
+            [0.25, 0],
+            [0.5, 0],
+            [0.75, 0],
+            [1, 0],
+            [1, 0.25],
+            [1, 0.5],
+            [1, 0.75],
+            [1, 1],
+            [0.75, 1],
+            [0.5, 1],
+            [0.25, 1],
+            [0, 1],
+            [0, 0.75],
+            [0, 0.5],
+            [0, 0.25]
+        ],
+        "shapeControl": {
+            "controllers": [
+                [0, 0, "nwse-resize"],
+                [0, 0.5, "ew-resize"],
+                [0, 1, "nesw-resize"],
+                [0.5, 0, "ns-resize"],
+                [0.5, 1, "ns-resize"],
+                [1, 0, "nesw-resize"],
+                [1, 0.5, "ew-resize"],
+                [1, 1, "nwse-resize"]
+            ],
+            "rotate": true
+        },
+        "name": "XFC_NODE_Diamond",
+        "x": 189.5000000000001,
+        "y": -351.25,
+        "size": [80, 80],
+        "style": {
+            "fill": "#FFFFFF",
+            "fillOpacity": 1,
+            "stroke": "#000000",
+            "strokeOpacity": 1,
+            "lineWidth": 1,
+            "lineDash": []
+        },
+        "groupId": ""
+    }],
+    "edges": [{
+        "id": "g48",
+        "source": "g43",
+        "sourceAnchor": 7,
+        "target": "g45",
+        "label": "",
+        "labelCfg": {
+            "position": "center",
+            "style": {
+                "autoRotate": true,
+                "fontSize": 16,
+                "stroke": "#000000"
+            }
+        },
+        "attrs": {
+            "start": "g43",
+            "end": "g45"
+        },
+        "style": {
+            "lineAppendWidth": 10,
+            "stroke": "#000000",
+            "lineWidth": 1,
+            "strokeOpacity": 1,
+            "lineDash": []
+        },
+        "type": "x-line",
+        "startArrow": false,
+        "endArrow": false,
+        "startPoint": {
+            "x": -59.03749999999988,
+            "y": -350.25,
+            "index": 7
+        },
+        "endPoint": {
+            "x": 4.500000000000114,
+            "y": -351.25,
+            "index": 15
+        },
+        "targetAnchor": 15
+    }, {
+        "id": "g51",
+        "source": "g45",
+        "sourceAnchor": 7,
+        "target": "g47",
+        "label": "",
+        "labelCfg": {
+            "position": "center",
+            "style": {
+                "autoRotate": true,
+                "fontSize": 16,
+                "stroke": "#000000"
+            }
+        },
+        "attrs": {
+            "start": "g45",
+            "end": "g47"
+        },
+        "style": {
+            "lineAppendWidth": 10,
+            "stroke": "#000000",
+            "lineWidth": 1,
+            "strokeOpacity": 1,
+            "lineDash": []
+        },
+        "type": "x-line",
+        "startArrow": false,
+        "endArrow": false,
+        "startPoint": {
+            "x": 79.50000000000011,
+            "y": -351.25,
+            "index": 7
+        },
+        "endPoint": {
+            "x": 148.79289321881356,
+            "y": -351.25,
+            "index": 15
+        },
+        "targetAnchor": 15
+    }],
+    "combos": [],
+    "groups": []
+}
