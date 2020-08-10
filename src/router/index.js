@@ -8,7 +8,7 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: () => import('../views/Index.vue')
   },
   {
     path: '/about',
