@@ -1,11 +1,11 @@
 <template>
-  <div  v-if="easyFlowVisible" style="height: calc(100vh);">
+  <div  v-if="easyFlowVisible" style="height: calc(100% - 20px);width: calc(100% - 20px);padding: 10px;font-size: 12px;">
     <el-row>
       <!--顶部工具菜单-->
       <el-col :span="24">
         <div class="ef-tooltar">
           <el-col :span="4">
-            <el-input type="primary" :underline="false" v-model="data.name" :disabled="readOnly" />
+            <el-input type="primary" :underline="false" v-model="data.name" :disabled="readOnly" placeholder="请输入流程名称" />
           </el-col>
           <el-divider direction="vertical"></el-divider>
           <el-button  type="text" icon="el-icon-delete" size="large" @click="deleteElement" :disabled="!this.activeElement.type || readOnly"></el-button>
@@ -15,6 +15,8 @@
           <el-button type="text" icon="el-icon-plus" size="large" @click="zoomAdd"></el-button>
           <el-divider direction="vertical"></el-divider>
           <el-button type="text" icon="el-icon-minus" size="large" @click="zoomSub"></el-button>
+          <el-divider direction="vertical"></el-divider>
+          <el-button type="text" icon="el-icon-refresh" size="large" @click="cleanAll"></el-button>
           <div style="float: right;margin-right: 5px">
             <!--                        <el-button type="info" plain round icon="el-icon-document" @click="dataInfo" size="mini">流程信息</el-button>-->
 <!--            <el-button type="primary" plain round @click="dataReloadA" icon="el-icon-refresh" size="mini">切换流程A</el-button>-->
@@ -29,21 +31,25 @@
       <div style="width: 230px;border-right: 1px solid #dce3e8;" v-if="!readOnly">
         <NodeMenu @addNode="addNode" ref="nodeMenu"></NodeMenu>
       </div>
-      <div id="efContainer" ref="efContainer" class="container" v-flowDrag>
-        <template v-for="node in data.nodeList">
-          <Node
-              :id="node.id"
-              :key="node.id"
-              :node="node"
-              :activeElement="activeElement"
-              @changeNodeSite="changeNodeSite"
-              @nodeRightMenu="nodeRightMenu"
-              @clickNode="clickNode"
-          >
-          </Node>
-        </template>
-        <!-- 给画布一个默认的宽度和高度 -->
-        <div style="position:absolute;top: 2000px;left: 2000px;">&nbsp;</div>
+      <div class="efBg" :class="readOnly ? 'noHasMenu' : 'hasMenu'">
+        <div id="efContainer" ref="efContainer" class="container"  style="width: 200%;height: 200%;overflow: hidden;transform-origin: 0 0 0">
+          <template v-for="node in data.nodeList">
+            <Node
+                v-flowDrag
+                :id="node.id"
+                :key="node.id"
+                :node="node"
+                :activeElement="activeElement"
+                @changeNodeSite="changeNodeSite"
+                @nodeRightMenu="nodeRightMenu"
+                @clickNode="clickNode"
+            >
+            </Node>
+          </template>
+          <!-- 给画布一个默认的宽度和高度 -->
+          <div style="position:absolute;top: 2000px;left: 2000px;">&nbsp;</div>
+        </div>
+
       </div>
       <!-- 右侧表单 -->
       <div style="width: 300px;border-left: 1px solid #dce3e8;background-color: #FBFBFB">
@@ -89,7 +95,7 @@ export default {
       // 控制画布销毁
       easyFlowVisible: true,
       // 是否加载完毕标志位
-      loadEasyFlowFinish: false,
+      loadFlowFinish: false,
       // 数据
       data: {
         nodeList:[],
@@ -105,7 +111,7 @@ export default {
         sourceId: undefined,
         targetId: undefined
       },
-      zoom: 0.5
+      zoom: 1
     }
   },
   // 基础配置
@@ -164,7 +170,7 @@ export default {
         // 会使整个jsPlumb重绘
         this.jsPlumb.setSuspendDrawing(false , true)
         // 初始化节点
-        this.loadEasyFlow()
+        this.loadFlow()
         // 单击连接线
         this.jsPlumb.bind('click' , (conn , originalEvent) => {
           this.activeElement.type = 'line'
@@ -178,9 +184,10 @@ export default {
         })
         // 连接线
         this.jsPlumb.bind('connection' , (evt) => {
+          console.log('evt:' + evt)
           let from = evt.source.id
           let to = evt.target.id
-          if (this.loadEasyFlowFinish) {
+          if (this.loadFlowFinish) {
             this.data.lineList.push({from: from, to: to})
           }
         })
@@ -224,8 +231,7 @@ export default {
 
       })
     },
-    loadEasyFlow(){
-      console.log(this.data)
+    loadFlow(){
       // 初始化节点
       for (var i = 0; i < this.data.nodeList.length; i++) {
         let node = this.data.nodeList[i]
@@ -236,6 +242,7 @@ export default {
         if (!node.viewOnly) {
           this.jsPlumb.draggable(node.id, {
             containment: 'parent',
+            grid: [17, 17],
             stop: function (el) {
               // 拖拽节点结束后的对调
               console.log('拖拽结束: ', el)
@@ -257,7 +264,7 @@ export default {
         this.jsPlumb.connect(connParam, this.jsplumbConnectOptions)
       }
       this.$nextTick(function () {
-        this.loadEasyFlowFinish = true
+        this.loadFlowFinish = true
       })
     },
     // 设置连线条件
@@ -383,6 +390,7 @@ export default {
         this.jsPlumb.makeTarget(nodeId, this.jsplumbTargetOptions)
         this.jsPlumb.draggable(nodeId, {
           containment: 'parent',
+          grid: [17, 17],
           stop: function (el) {
             // 拖拽节点结束后的对调
             console.log('拖拽结束: ', el)
@@ -475,7 +483,7 @@ export default {
       this.jsPlumb.setZoom(this.zoom)
     },
     zoomSub() {
-      if (this.zoom <= 0) {
+      if (this.zoom <= 0.5) {
         return
       }
       this.zoom = this.zoom - 0.1
@@ -503,6 +511,17 @@ export default {
     // 上传数据
     saveData(){
 
+    },
+    cleanAll() {
+      this.data.nodeList = []
+      this.data.lineList.forEach((item) => {
+        var conn = this.jsPlumb.getConnections({
+          source: item.sourceId,
+          target: item.targetId
+        })[0]
+        this.jsPlumb.deleteConnection(conn)
+      })
+      this.data.name = ''
     }
   }
 
@@ -510,6 +529,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.hasMenu{
+  width:calc( 100vw - 530px );
+}
+.noHasMenu{
+  width:calc( 100vw - 300px );
+}
 /deep/.el-input__inner {
   height: 32px;
   margin: 5px 0;

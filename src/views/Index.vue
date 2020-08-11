@@ -1,5 +1,7 @@
 <template>
-  <FlowChart :flowData="data" :readOnly="state === 'look'"/>
+  <div style="height: 100vh">
+    <FlowChart :flowData="data" :readOnly="state === 'look'"/>
+  </div>
 </template>
 
 <script>
@@ -11,7 +13,7 @@ export default {
   data(){
     return {
       data:{},
-      state:'look',
+      state:'add',
       refresh: true
     }
   },
@@ -28,6 +30,7 @@ export default {
         })
       }
       this.data = data
+      console.log(this.data)
     },
   }
 }

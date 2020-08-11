@@ -33,7 +33,7 @@
           </el-form-item>
           <el-form-item>
 <!--                        <el-button icon="el-icon-close">重置</el-button>-->
-          <el-button v-if="!readOnly" type="primary" icon="el-icon-check" @click="save">保存</el-button>
+          <el-button v-if="!readOnly" type="primary" @click="save">修改</el-button>
           </el-form-item>
         </el-form>
 
@@ -43,7 +43,7 @@
           </el-form-item>
           <el-form-item>
 <!--                        <el-button icon="el-icon-close">重置</el-button>-->
-            <el-button type="primary" icon="el-icon-check" @click="saveLine">保存</el-button>
+            <el-button v-if="!readOnly" type="primary" @click="saveLine">修改</el-button>
           </el-form-item>
         </el-form>
       </div>

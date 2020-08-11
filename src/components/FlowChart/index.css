@@ -3,6 +3,14 @@
     position: relative;
     overflow: scroll;
     flex: 1;
+    background-image: linear-gradient(90deg, rgba(180, 180, 180, 0.15) 10%, rgba(0, 0, 0, 0) 10%), linear-gradient(rgba(180, 180, 180, 0.15) 10%, rgba(0, 0, 0, 0) 10%);
+    background-size: 17px 17px;
+}
+.efBg{
+    position: relative;
+    height:100%;
+    overflow: auto;
+
 }
 
 /*顶部工具栏*/
@@ -91,7 +99,7 @@
 
 /*节点左侧的竖线*/
 .ef-node-left {
-    width: 4px;
+    width: 6px;
     background-color: #1879FF;
     border-radius: 4px 0 0 4px;
 }

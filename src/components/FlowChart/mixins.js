@@ -48,7 +48,7 @@ export const easyFlowMixin = {
                  */
                 PaintStyle: {
                     // 线的颜色
-                    stroke: '#E0E3E7',
+                    stroke: '#b0b2b5',
                     // 线的粗细，值越大线越粗
                     strokeWidth: 1,
                     // 设置外边线的颜色，默认设置透明，这样别人就看不见了，点击线的时候可以不用精确点击，参考 https://blog.csdn.net/roymno2/article/details/72717101
@@ -69,13 +69,6 @@ export const easyFlowMixin = {
                         direction: 1, // 方向，默认值为1（表示向前），可选-1（表示向后）
                         foldback: 1 // 折回，也就是尾翼的角度，默认0.623，当为1时，为正三角
                     }],
-                    // ['Diamond', {
-                    //     events: {
-                    //         dblclick: function (diamondOverlay, originalEvent) {
-                    //             console.log('double click on diamond overlay for : ' + diamondOverlay.component)
-                    //         }
-                    //     }
-                    // }],
                     ['Label', {
                         label: '',
                         location: 0.1,
@@ -83,9 +76,9 @@ export const easyFlowMixin = {
                     }]
                 ],
                 // 绘制图的模式 svg、canvas
-                RenderMode: 'svg',
+                RenderMode: 'canvas',
                 // 鼠标滑过线的样式
-                HoverPaintStyle: {stroke: '#b0b2b5', strokeWidth: 1},
+                HoverPaintStyle: {stroke: '#3d3d3d', strokeWidth: 1},
                 // 滑过锚点效果
                 // EndpointHoverStyle: {fill: 'red'}
                 Scope: 'jsPlumb_DefaultScope' // 范围，具有相同scope的点才可连接

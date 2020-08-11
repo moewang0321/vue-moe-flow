@@ -10,7 +10,7 @@
     <div class="ef-node-left"></div>
     <!-- 节点类型的图标 -->
     <div class="ef-node-left-ico flow-node-drag">
-      <i :class="nodeIcoClass"></i>
+      <i :class="nodeIcoClass" class=" flow-node-drag"></i>
     </div>
     <!-- 节点名称 -->
     <div class="ef-node-text" :show-overflow-tooltip="true">
@@ -64,11 +64,12 @@ export default {
       this.$emit('clickNode' , this.node.id)
     },
     // 鼠标移动后抬起
-    changeNodeSite() {
+    changeNodeSite(e) {
       // 避免抖动
       if (this.node.left == this.$refs.node.style.left && this.node.top == this.$refs.node.style.top) {
         return;
       }
+      console.log(e.currentTarget)
       this.$emit('changeNodeSite', {
         nodeId: this.node.id,
         left: this.$refs.node.style.left,
