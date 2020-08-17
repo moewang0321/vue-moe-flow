@@ -26,7 +26,7 @@ import FlowChart from '@/components/FlowChart/Index'
 
 ---
 
-``` json
+``` js
 
  {
     name: '流程D',
