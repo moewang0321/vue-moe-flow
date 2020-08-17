@@ -1,34 +1,33 @@
+
 <template>
   <div class="home">
-    <Flow :flowData="data"></Flow>
+    <Flow :flowData="data" ref="flow"></Flow>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Flow from '@/components/flow/Index'
-import data from '@/mock/data.json'
+import Flow from "@/components/flow/Index";
+import data from "@/mock/nodes.json";
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    Flow
+    Flow,
   },
-  data(){
+  data() {
     return {
-      data:{}
-    }
+      data: {},
+    };
   },
-  created() {
-    this.handleData()
+  async created() {
+    await this.handleData();
   },
-  methods:{
-    handleData(){
+  methods: {
+    handleData() {
       setTimeout(() => {
-        console.log(data)
-        this.data = data
-      } , 1000)
-    }
-  }
-
-}
+        this.data = data;
+      }, 1000);
+    },
+  },
+};
 </script>

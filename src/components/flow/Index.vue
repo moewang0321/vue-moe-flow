@@ -1,9 +1,9 @@
 
 <style lang="scss" scoped>
-.flow-box{
+.flow-box {
   margin: 0 auto;
 }
-.sketchpad-box{
+.sketchpad-box {
   overflow: auto;
   position: absolute;
   left: 0;
@@ -20,72 +20,66 @@
     margin-top: 100px;
     margin-bottom: 100px;
     z-index: 100;
-    background: #FFFFFF;
-    box-shadow: 0 0 2px 2px rgba(0, 0, 0, .1);
+    background: #ffffff;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
   }
 }
 </style>
 
-
 <template>
   <div class="flow-box">
     <div class="sketchpad-box">
-      <div id="sketchpad">
-
-      </div>
+      <div id="sketchpad"></div>
     </div>
-
   </div>
 </template>
 
 <script>
-import G6 from './global/g6/index'
-import * as G6Util from '@antv/util'
+import G6 from "./global/g6/index";
+import * as G6Util from "@antv/util";
 export default {
   name: "Index",
-  props:{
-    width:{
-      type:Number,
-      default:800
+  props: {
+    width: {
+      type: Number,
+      default: 800,
     },
-    height:{
-      type:Number,
-      default:800
+    height: {
+      type: Number,
+      default: 800,
     },
-    flowData:{
-      type:Object,
-      default(){
-        return {}
-      }
+    flowData: {
+      type: Object,
+      default() {
+        return {};
+      },
     },
   },
-  data(){
+  data() {
     return {
-      editor:null,
+      editor: null,
       editorInfo: {},
       defInfo: {
         // 编辑器状态：add || edit || preview
-        status: 'add'
+        status: "preview",
       },
-    }
+    };
   },
-  computed:{
+  computed: {},
+  methods: {
+    init() {
+      const _t = this;
+      const el = _t.$el;
+      const plugins = [];
 
-  },
-  methods:{
-    init(){
-      const _t = this
-      const el = _t.$el
-      const plugins = []
+      const sketchpad = el.querySelector("#sketchpad");
+      const grid = new G6.Grid();
 
-      const sketchpad = el.querySelector('#sketchpad')
-      const grid = new G6.Grid()
-
-      plugins.push(grid)
+      plugins.push(grid);
 
       _t.editor = new G6.Graph({
         plugins,
-        container:sketchpad,
+        container: sketchpad,
         width: sketchpad.clientWidth,
         height: sketchpad.clientHeight,
         fitView: true,
@@ -95,15 +89,15 @@ export default {
         modes: {
           edit: [
             {
-              type: 'node-control',
+              type: "node-control",
               config: {
                 shapeControlPoint: {
                   // 是否在缩放、旋转节点时更新所有与之相连的边
-                  updateEdge: false
+                  updateEdge: false,
                 },
                 dragNode: {
                   // 是否在拖拽节点时更新所有与之相连的边
-                  updateEdge: false
+                  updateEdge: false,
                 },
                 // 是否支持在节点上添加文本
                 nodeLabel: true,
@@ -113,79 +107,84 @@ export default {
                 tooltip: {
                   shapeControl: true,
                   dragNode: true,
-                  dragEdge: true
+                  dragEdge: true,
                 },
                 // 是否启用对齐线
                 alignLine: {
                   enable: true,
                   style: {
-                    stroke: '#FFA500',
-                    lineWidth: 1
-                  }
-                }
-              }
-            }
+                    stroke: "#FFA500",
+                    lineWidth: 1,
+                  },
+                },
+              },
+            },
           ],
           // 只读，
-          preview: [
-            'zoom-canvas',
-            'drag-canvas',
-            'preview-canvas'
-          ]
+          preview: ["zoom-canvas", "drag-canvas", "preview-canvas"],
         },
         // 分组样式
-        groupType: 'rect',
+        groupType: "rect",
         groupStyle: {
           default: {
             lineWidth: 1,
-            stroke: '#29B6F2',
+            stroke: "#29B6F2",
             // lineDash: [ 5, 5 ],
             strokeOpacity: 1,
-            fill: '#29B6F2',
+            fill: "#29B6F2",
             fillOpacity: 0.1,
             opacity: 1,
             minDis: 0,
-            maxDis: 0
-          }
-        }
-      })
+            maxDis: 0,
+          },
+        },
+      });
 
       // 挂载G6配置
-      _t.editor.$C = G6.$C
+      _t.editor.$C = G6.$C;
       // 挂载编辑器$D命名空间，用于Vue组件与Graph之间传值
       _t.editor.$D = {
-        fill: '#FFFFFF',
+        fill: "#FFFFFF",
         fillOpacity: 1,
-        lineColor: '#000000',
+        lineColor: "#000000",
         strokeOpacity: 1,
         lineWidth: 1,
-        lineType: 'x-line',
-        lineDash: 'solid',
+        lineType: "x-line",
+        lineDash: "solid",
         startArrow: false,
         endArrow: false,
         lineAppendWidth: 10,
-        autoRotate: true
-      }
+        autoRotate: true,
+      };
       // 设置模式为编辑
-      _t.mode = 'preview'
-      _t.editor.setMode('preview')
+      _t.mode = "preview";
+      _t.editor.setMode("preview");
 
-      window.editor = _t.editor
-      _t.editor.read(_t.flowData)
+      window.editor = _t.editor;
+      console.log(_t.flowData);
+
+      _t.renderData();
     },
-    initInfo (data = {}) {
-      const _t = this
+    initInfo(data = {}) {
+      const _t = this;
       _t.editorInfo = {
         ..._t.defInfo,
-        ...data
-      }
+        ...data,
+      };
+    },
+    renderData() {
+      const _t = this;
+      _t.editor.data(_t.flowData);
+      _t.editor.render();
     },
   },
   created() {
-    const _t = this
+    const _t = this;
     // 处理操作类型，初始化编辑器
-    _t.initInfo()
-    _t.$nextTick(_t.init)
-  }
-}
+    _t.initInfo();
+    _t.$nextTick(() => {
+      _t.init();
+    });
+  },
+};
 </script>
