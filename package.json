@@ -12,7 +12,7 @@
     "core-js": "^3.6.5",
     "element-ui": "^2.13.2",
     "jsplumb": "^2.14.5",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "mousetrap": "^1.6.5",
     "vue": "^2.6.11",
     "vue-codemirror": "^4.0.6",
