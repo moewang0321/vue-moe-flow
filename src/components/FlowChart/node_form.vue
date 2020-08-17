@@ -126,15 +126,15 @@
 </script>
 
 <style>
-    .el-node-form-tag {
-        position: absolute;
-        top: 50%;
-        margin-left: -15px;
-        height: 40px;
-        width: 15px;
-        background-color: #fbfbfb;
-        border: 1px solid rgb(220, 227, 232);
-        border-right: none;
-        z-index: 0;
-    }
+  .el-node-form-tag {
+    position: absolute;
+    top: 50%;
+    margin-left: -15px;
+    height: 40px;
+    width: 15px;
+    background-color: #fbfbfb;
+    border: 1px solid rgb(220, 227, 232);
+    border-right: none;
+    z-index: 0;
+  }
 </style>

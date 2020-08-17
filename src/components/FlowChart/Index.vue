@@ -143,7 +143,7 @@ export default {
           }
 
           document.onmouseup = function (e) {
-            el.style.cursor = 'auto'
+            el.style.cursor = ''
             document.onmousemove = null
             document.onmouseup = null
           }
@@ -237,7 +237,7 @@ export default {
         let node = this.data.nodeList[i]
         // 设置源点，可以拖出线连接其他节点
         this.jsPlumb.makeSource(node.id, lodash.merge(this.jsplumbSourceOptions, {}))
-        // // 设置目标点，其他源点拖出的线可以连接该节点
+        // 设置目标点，其他源点拖出的线可以连接该节点
         this.jsPlumb.makeTarget(node.id, this.jsplumbTargetOptions)
         if (!node.viewOnly) {
           this.jsPlumb.draggable(node.id, {
@@ -245,7 +245,6 @@ export default {
             grid: [17, 17],
             stop: function (el) {
               // 拖拽节点结束后的对调
-              console.log('拖拽结束: ', el)
             }
           })
         }
