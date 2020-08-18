@@ -32,7 +32,7 @@
             </el-select>
           </el-form-item>
           <el-form-item>
-<!--                        <el-button icon="el-icon-close">重置</el-button>-->
+<!--      <el-button icon="el-icon-close">重置</el-button>-->
           <el-button v-if="!readOnly" type="primary" @click="save">修改</el-button>
           </el-form-item>
         </el-form>
@@ -42,12 +42,12 @@
             <el-input v-model="line.label"></el-input>
           </el-form-item>
           <el-form-item>
-<!--                        <el-button icon="el-icon-close">重置</el-button>-->
+<!--        <el-button icon="el-icon-close">重置</el-button>-->
             <el-button v-if="!readOnly" type="primary" @click="saveLine">修改</el-button>
           </el-form-item>
         </el-form>
       </div>
-      <!--            <div class="el-node-form-tag"></div>-->
+<!--      <div class="el-node-form-tag"></div>-->
     </div>
   </div>
 
