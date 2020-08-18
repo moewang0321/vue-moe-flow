@@ -48,14 +48,14 @@ export default {
             {
               id: '11',
               type: 'timer',
-              name: '数据接入',
+              name: '节点1',
               ico: 'el-icon-time',
               // 自定义覆盖样式
               style: {}
             }, {
               id: '12',
               type: 'task',
-              name: '接口调用',
+              name: '节点2',
               ico: 'el-icon-odometer',
               // 自定义覆盖样式
               style: {}
@@ -72,14 +72,14 @@ export default {
             {
               id: '21',
               type: 'end',
-              name: '流程结束',
+              name: '节点3',
               ico: 'el-icon-caret-right',
               // 自定义覆盖样式
               style: {}
             }, {
               id: '22',
               type: 'over',
-              name: '数据清理',
+              name: '节点4',
               ico: 'el-icon-shopping-cart-full',
               // 自定义覆盖样式
               style: {}
