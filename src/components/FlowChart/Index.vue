@@ -282,7 +282,7 @@ export default {
         label: label,
       })
       this.data.lineList.forEach(function (line) {
-        if (line.from == from && line.to == to) {
+        if (line.from === from && line.to === to) {
           line.label = label
         }
       })
@@ -310,10 +310,7 @@ export default {
     // 删除线
     deleteLine(from, to) {
       this.data.lineList = this.data.lineList.filter(function (line) {
-        if (line.from == from && line.to == to) {
-          return false
-        }
-        return true
+        return !(line.from === from && line.to === to);
       })
     },
     // 改变连线
@@ -412,12 +409,8 @@ export default {
          * 这里需要进行业务判断，是否可以删除
          */
         this.data.nodeList = this.data.nodeList.filter(function (node) {
-          if (node.id === nodeId) {
-            // 伪删除，将节点隐藏，否则会导致位置错位
-            // node.show = false
-            return false
-          }
-          return true
+          return node.id !== nodeId;
+
         })
         this.$nextTick(function () {
           this.jsPlumb.removeAllEndpoints(nodeId);
