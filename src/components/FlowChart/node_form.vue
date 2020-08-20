@@ -55,7 +55,7 @@
 
 <script>
   import { cloneDeep } from 'lodash'
-
+	//TODO: 表单配置
   export default {
     props:{
       readOnly: { // 只读

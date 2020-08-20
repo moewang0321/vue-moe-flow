@@ -14,7 +14,7 @@
 </template>
 <script>
 import draggable from 'vuedraggable'
-
+//TODO: 快捷节点配置
 var mousePosition = {
   left: -1,
   top: -1
@@ -50,15 +50,11 @@ export default {
               type: 'timer',
               name: '节点1',
               ico: 'el-icon-time',
-              // 自定义覆盖样式
-              style: {}
             }, {
               id: '12',
               type: 'task',
               name: '节点2',
               ico: 'el-icon-odometer',
-              // 自定义覆盖样式
-              style: {}
             }
           ]
         },
@@ -74,15 +70,11 @@ export default {
               type: 'end',
               name: '节点3',
               ico: 'el-icon-caret-right',
-              // 自定义覆盖样式
-              style: {}
             }, {
               id: '22',
               type: 'over',
               name: '节点4',
               ico: 'el-icon-shopping-cart-full',
-              // 自定义覆盖样式
-              style: {}
             }
           ]
         }
