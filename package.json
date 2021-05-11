@@ -9,7 +9,7 @@
   "dependencies": {
     "element-ui": "^2.13.2",
     "jsplumb": "^2.14.5",
-    "lodash": "4.17.19",
+    "lodash": "4.17.21",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuedraggable": "2.23.0",
